@@ -1,0 +1,5 @@
+//commands Help, Update, Search, Add
+//Create a general function read and write .csv file for use in others function Update, search, Add
+// Create a Search function (tip: check example in slack)
+//Create a Add Contact function contain prompt question of new contact.
+//Create a Update function

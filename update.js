@@ -7,27 +7,36 @@ function updateContact() {
     csv.parse(data, { columns: true }, function(err, data) {
 
       var contactValue = String(prompt("Enter a email of the contact you want to Update: "));
+      var contactPosition = null;
 
-    //   var upfirst_name = String(prompt("first name: "));
-    //   var uplast_name = String(prompt("last name: "));
-    //   var upphone = String(prompt("Phone Number: "));
-    //   var upemail = String(prompt("Email: "));
-    //   var upcity = String(prompt("City: "));
-    //   var upzipcode = String(prompt("Zipcode: "));
-    //   var upwebsite = String(prompt("Website: "));
-    //   var upcompany = String(prompt("Company Name: "));
+      for (var i = 0; i < data.length; i++) {
+        if(data[i].email === contactValue) {
+          contactPosition = i;
+          break;
+        }
+      }
+
+      var upfirst_name = String(prompt("New first name: "));
+      var uplast_name = String(prompt("New last name: "));
+      var upphone = String(prompt("New Phone Number: "));
+      var upemail = String(prompt("New Email: "));
+      var upcity = String(prompt("New City: "));
+      var upzipcode = String(prompt("New Zipcode: "));
+      var upwebsite = String(prompt("New Website: "));
+      var upcompany = String(prompt("New Company Name: "));
      //
-    //   contactNew = {
-    //   first_name: first_name,
-    //   last_name:  last_name,
-    //   phone:      phone,
-    //   email:      email,
-    //   city:       city,
-    //   zipcode:    zipcode,
-    //   website:    website,
-    //   company:    company
-    //  };
+      data[contactPosition] = {
+      first_name: upfirst_name,
+      last_name:  uplast_name,
+      phone:      upphone,
+      email:      upemail,
+      city:       upcity,
+      zipcode:    upzipcode,
+      website:    upwebsite,
+      company:    upcompany
+     };
 
+     console.log(data[contactPosition]);
 
       csv.transform(data, function(row) {
         console.log(data);
@@ -38,7 +47,7 @@ function updateContact() {
             if (error) {
               throw error;
             }
-            console.log('New Contact was successful');
+            console.log('Update Contact was successful');
           });
         });
       });
